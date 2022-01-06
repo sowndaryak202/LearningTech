@@ -9,7 +9,7 @@ namespace DiamondProblem
     /// <summary>
     /// Problem statement : why multiple inheritance is not allowed
     /// Answer : because of diamond prob
-    /// Solution: using interface 
+    /// Solution: using interface or wrapper class
     /// </summary>
     internal class Program
     {
@@ -71,5 +71,56 @@ namespace DiamondProblem
         {
 
         }
+    }
+
+    class ParentA
+    {
+        public void MethodA()
+        {
+            Console.WriteLine("MethodA from ParentA called");
+        }
+        public void MethodB()
+        {
+            Console.WriteLine("MethodB from ParentA called");
+        }
+    }
+
+    class ParentB
+    {
+        public void MethodA()
+        {
+            Console.WriteLine("MethodA from ParentB called");
+        }
+        public void MethodB()
+        {
+            Console.WriteLine("MethodB from ParentB called");
+        }
+    }
+
+    class ParentWrapper
+    {
+        ParentA objA = new ParentA();
+        ParentB objB = new ParentB();
+        public void ParentWrapperAMethodA()
+        {
+            objA.MethodA();
+        }
+        public void ParentWrapperAMethodB()
+        {
+            objA.MethodB();
+        }
+        public void ParentWrapperBMethodA()
+        {
+            objB.MethodA();
+        }
+        public void ParentWrapperBMethodB()
+        {
+            objB.MethodB();
+        }
+    }
+
+    class Child : ParentWrapper
+    {
+
     }
 }
