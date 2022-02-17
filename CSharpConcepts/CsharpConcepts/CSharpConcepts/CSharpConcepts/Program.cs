@@ -25,6 +25,11 @@ namespace CSharpConcepts
 
             #endregion
 
+            #region PassAsFunc
+            PassAsFunc passAsFunc = new PassAsFunc();
+            passAsFunc.PassAs((x) => { return x.ToString(); });
+            #endregion
+
         }
     }
 }
